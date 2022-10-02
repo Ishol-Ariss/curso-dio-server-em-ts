@@ -3,11 +3,10 @@ import usersRoute from './routes/users.route'
 
 const app = express()
 
-app.use(usersRoute)
+app.use(express.json())
+app.use(express.urlencoded({ extended: true}))
 
-app.use('/status', (req: Request, res: Response, next: NextFunction) => {
-    res.status(200).send({foo: 'Mudou dnv'})
-})
+app.use(usersRoute)
 
 app.listen(3333, () =>{
     console.log("rodando!")
